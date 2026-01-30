@@ -1,0 +1,6 @@
+cidade;temperatura_c;condicao;fonte
+São Paulo;22.0;Passing clouds.;Web Scraping
+Rio de Janeiro;24.0;Passing clouds.;Web Scraping
+Belo Horizonte;19.0;Passing clouds.;Web Scraping
+Curitiba;18.0;Passing clouds.;Web Scraping
+Porto Alegre;24.0;Passing clouds.;Web Scraping
