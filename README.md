@@ -32,3 +32,6 @@ python main_scraping.py
 ```
 python main_api.py
 ```
+
+
+Ao final da execução, o arquivo `weather_data.csv` deverá ser criado com as informações das cidades de São Paulo, Rio de Janeiro, Belo Horizonte, Curitiba e Porto Alegre.
