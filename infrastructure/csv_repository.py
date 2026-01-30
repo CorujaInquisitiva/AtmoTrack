@@ -9,11 +9,9 @@ class CSVRepository:
         file_exists = os.path.isfile(self.filename)
 
         with open(self.filename, mode='a', newline='', encoding='utf-8') as file:
-            writer = csv.writer(file)
-
+            writer = csv.writer(file, delimiter=';')
             if not file_exists:
                 writer.writerow(["cidade", "temperatura_c", "condicao", "fonte"])
-
             for weather in weather_list:
                 writer.writerow([
                     weather.city,
