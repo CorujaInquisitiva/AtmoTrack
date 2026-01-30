@@ -1,30 +1,24 @@
-from infrastructure.scraping_client import WeatherScrapingClient
-from infrastructure.csv_repository import CSVRepository
-from application.weather_service import WeatherService
+import requests
 
-def main():
-    city = "sao-paulo"
-    country = "brazil"
+class WeatherAPIClient:
+    BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
 
-    scraping_client = WeatherScrapingClient()
-    service = WeatherService()
-    repository = CSVRepository("weather_data.csv")
+    def __init__(self, api_key):
+        self.api_key = api_key
 
-    try:
-        temperature, condition = scraping_client.fetch_weather(country, city)
+    def fetch_weather(self, city):
+        params = {
+            "q": city,
+            "appid": self.api_key,
+            "units": "metric",
+            "lang": "pt_br"
+        }
 
-        weather = service.create_weather(
-            city="São Paulo",
-            temperature=temperature,
-            condition=condition,
-            source="Web Scraping"
-        )
+        response = requests.get(self.BASE_URL, params=params, timeout=10)
+        response.raise_for_status()
+        data = response.json()
 
-        repository.save([weather])
-        print("Dados coletados via scraping com sucesso.")
+        temperature = data["main"]["temp"]
+        condition = data["weather"][0]["description"]
 
-    except Exception as e:
-        print(f"Erro no scraping: {e}")
-
-if __name__ == "__main__":
-    main()
+        return temperature, condition
