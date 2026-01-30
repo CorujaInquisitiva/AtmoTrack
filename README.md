@@ -28,7 +28,7 @@ Obter sua chave no OpenWeatherMap:
 1. Crie uma conta: https://openweathermap.org/
 2. Vá em API Keys → Gere uma nova chave.
 3. Copie para .env como mostrado acima.
-4. Altere a constante na classe `main_api`
+4. Altere a constante `API_KEY` na classe `main_api`.
 
 Para executar os scripts use os seguintes comandos:
 
